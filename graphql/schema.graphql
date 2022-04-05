@@ -8,14 +8,14 @@ type Query {
    book(id: ID! @eq ): Book @find
    bookSearch(search: string! @eq ): [Book] 
  
-    "Find a single user by an identifying attribute."
-    user(id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])\
-      email: String @eq @rules(apply: ["prohibits:id", "required_without:id", "email"])
-    ): User @find
+    # "Find a single user by an identifying attribute."
+    # user(id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])\
+    #   email: String @eq @rules(apply: ["prohibits:id", "required_without:id", "email"])
+    # ): User @find
 
-    "List multiple users."
-    users( name: String @where(operator: "like")
-    ): [User!]! @paginate(defaultCount: 10)
+    # "List multiple users."
+    # users( name: String @where(operator: "like")
+    # ): [User!]! @paginate(defaultCount: 10)
 }
 
 
@@ -43,7 +43,7 @@ type Mutation {
 
    deleteBook(
      id: ID @rules(apply: ["required"])
-    ): Book @delete
+    ): Book! @delete
   
 
   "Catagorymutation"
@@ -59,7 +59,7 @@ type Mutation {
 
    deleteCatagory(
      id: ID @rules(apply: ["required"])
-    ): Catagory @delete
+    ): Catagory! @delete
  
 }
 
