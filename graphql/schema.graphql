@@ -6,7 +6,7 @@ type Query {
  
    books: [Book] @all
    book(id: ID! @eq ): Book @find
-   bookSearch(search: string! @eq ): [Book] 
+   bookSearch(search: String! @eq ): [Book] 
  
     # "Find a single user by an identifying attribute."
     # user(id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])\
@@ -23,42 +23,42 @@ type Query {
 type Mutation {
 
    createBook(
-     title: string @rules(apply: ["required"]),
-     author: string @rules(apply: ["required"]),
+     title: String @rules(apply: ["required"]),
+     author: String @rules(apply: ["required"]),
      featured: Boolean,
-     link: string,
-     description: string,
-     image: string
+     link: String,
+     description: String,
+     image: String
     ): Book @create
 
    updateBook(
      id: ID  @rules(apply: ["required"]),
-     title: string @rules(apply: ["required"]),
-     author: string @rules(apply: ["required"]),
+     title: String @rules(apply: ["required"]),
+     author: String @rules(apply: ["required"]),
      featured: Boolean,
-     link: string,
-     description: string,
-     image: string
+     link: String,
+     description: String,
+     image: String
     ): Book @update
 
    deleteBook(
-     id: ID @rules(apply: ["required"])
+     id: ID! @rules(apply: ["required"])
     ): Book! @delete
   
 
   "Catagorymutation"
 
    createCatagory(
-     title: string @rules(apply: ["required"])
+     title: String @rules(apply: ["required"])
     ): Catagory @create
 
    updateCatagory(
      id: ID  @rules(apply: ["required"]),
-     title: string @rules(apply: ["required"])
+     title: String @rules(apply: ["required"])
     ): Catagory @update
 
    deleteCatagory(
-     id: ID @rules(apply: ["required"])
+     id: ID! @rules(apply: ["required"])
     ): Catagory! @delete
  
 }
